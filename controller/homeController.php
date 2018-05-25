@@ -11,7 +11,10 @@ class homeController {
 
     public function handleRequest()
     {
-        switch($_GET['action'])
+        //Router testing stuff
+        $uri = explode('?', $_SERVER['REQUEST_URI'], 2);
+
+        switch(isset($uri[1]) ? $uri[1] : $uri[0])
         {
             default:
                 $this->start();
