@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="assets/fontawesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/custom/css/style.css">
 
+    <link rel="shortcut icon" href="favicon.ico">
+
     <title>Multiversum</title>
   </head>
   <body>
+
+  <?php require_once('assets/custom/template/navigation.php'); ?>

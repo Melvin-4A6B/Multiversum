@@ -7,24 +7,56 @@ class homeController {
     public function __construct()
     {
         $this->homeModel = new homeModel();
+        $this->router();
     }
 
-    public function handleRequest()
+    public function router()
     {
-        //Router testing stuff
-        $uri = explode('?', $_SERVER['REQUEST_URI'], 2);
+        $uri = $_GET['p'];
 
-        switch(isset($uri[1]) ? $uri[1] : $uri[0])
+        if(!isset($uri))
         {
+            $uri = '';
+
+        }
+
+        switch($uri)
+        {
+            case 'home':
+                $this->home();
+
+            case 'cat':
+                $this->cat();
+
+            case 'contact':
+                $this->contact();
+
             default:
-                $this->start();
+                $this->home();
         }
     }
 
-    public function start()
+    public function home() 
     {
-        $home = $this->homeModel->displayHome();
+        $app = 'Home';
+
         include_once('view/home.php');
+        exit();
+    }
+
+    public function cat() 
+    {
+        $app = 'Catalogus';
+
+        include_once('view/catalogus.php');
+        exit();
+    }
+
+    public function contact() 
+    {
+        $app = 'Contact';
+
+        include_once('view/contact.php');
         exit();
     }
 
