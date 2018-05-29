@@ -1,12 +1,14 @@
 <?php
 
 require_once('model/homeModel.php');
+require_once('controller/contactController.php');
 
 class homeController {
 
     public function __construct()
     {
         $this->homeModel = new homeModel();
+        $this->contactController = new contactController();
         $this->router();
     }
 
@@ -54,7 +56,7 @@ class homeController {
 
     public function contact() 
     {
-        $app = 'Contact';
+        $app = $this->contactController->makeContactForm();
 
         include_once('view/contact.php');
         exit();
