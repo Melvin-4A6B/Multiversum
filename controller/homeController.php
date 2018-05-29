@@ -38,7 +38,7 @@ class homeController {
 
     public function home() 
     {
-        $app = 'Home';
+        $app = $this->homeModel->displayHome();
 
         include_once('view/home.php');
         exit();
