@@ -11,7 +11,15 @@ class contactController {
 
 	public function makeContactForm()
 	{
-		$result = $this->contactModel->contactForm();
+		$result = $this->contactModel->contact();
 		return $result;
+	}
+
+	public function collectContact()
+	{
+		if(isset($_REQUEST['contact']))
+		{
+			$contact = $this->contactModel->contact();
+		}
 	}
 }

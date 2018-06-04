@@ -2,6 +2,8 @@
 
 require_once('model/homeModel.php');
 require_once('controller/contactController.php');
+require_once('controller/catalogusController.php');
+require_once('controller/detailsController.php');
 
 class homeController {
 
@@ -9,6 +11,8 @@ class homeController {
     {
         $this->homeModel = new homeModel();
         $this->contactController = new contactController();
+        $this->catalogusController = new catalogusController();
+        $this->detailsController = new detailsController();
         $this->router();
     }
 
@@ -19,7 +23,8 @@ class homeController {
         if(!isset($uri))
         {
             $uri = '';
-
+            header('Location: ?p=home');
+            exit();
         }
 
         switch($uri)
@@ -29,6 +34,9 @@ class homeController {
 
             case 'cat':
                 $this->cat();
+            
+            case 'details':
+                $this->details();
 
             case 'contact':
                 $this->contact();
@@ -48,9 +56,17 @@ class homeController {
 
     public function cat() 
     {
-        $app = 'Catalogus';
+        $app = $this->catalogusController->showCatalogus();
 
         include_once('view/catalogus.php');
+        exit();
+    }
+
+    public function details()
+    {
+        $app = $this->detailsController->showDetails();
+
+        include_once('view/details.php');
         exit();
     }
 

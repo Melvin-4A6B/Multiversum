@@ -7,22 +7,21 @@
         <div class="card-body">
         
         <?php if(isset($app) && !empty($app))
-        {   
-            echo '<div class="alert alert-danger" role="alert">';
+            {   
         ?>
-
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
         <?php
-            for($i = 0; $i < count($app); $i++) {
+            for($i = 0; $i < count($app); $i++) 
+            {
                  echo $app[$i] . '<br>';
             }
             echo '</div>';
         }
-        
         ?>
+        
         <form method="post" action="">
             <div class="form-group">
                 <label for="naam">Naam&#42;</label>
