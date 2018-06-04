@@ -1,20 +1,87 @@
 <?php
 
+require_once('controller/dataHandler.php');
+
 class htmlElements {
 
-	public function __construct() 
-	{
+	public $html;
 
+	public function __construct() 
+	{	
+		$this->dataHandler = new dataHandler();
 	}
 
 	public function sanitize($content)
 	{
+		$dom = html_entity_decode($content);
+		$dom = preg_replace('#<script(.?)>(.?)</script>#is', '', $dom);
+		$dom = strip_tags($dom, '<script>');
+		$dom = htmlentities($dom);
+		$dom = htmlspecialchars($dom);
 
-	$dom = html_entity_decode($content);
-	$dom = preg_replace('#<script(.?)>(.?)</script>#is', '', $dom);
-	$dom = strip_tags($dom, '<script>');
-	$dom = htmlentities($dom);
-	$dom = htmlspecialchars($dom);
-	return $dom;
+		return $dom;
+	}
+
+	public function displayProducts()
+	{
+		$sql = "SELECT * FROM products WHERE sale = '0'";
+		$products = $this->dataHandler->readData($sql);
+
+		foreach($products as $product)
+		{
+			$this->html = '<div class="col-md-4">';
+			$this->html .= '<div class="card" style="width: 18rem;">
+								<a href="?p=details&pid='.$product->product_id.'">
+									<img class="card-img-top" src="'.$product->product_image.'" alt="'.$product->product_name.'">
+								</a>	
+								<div class="card-body">
+									<h5 class="card-title"><a href="?p=details&pid='.$product->product_id.'">'.$product->product_name.'</a></h5>
+									<h5 class="card-title price">&euro;'.$product->product_price.'</h5>
+									<p class="card-text">'.$product->product_description.'</p>
+									<button class="btn btn-primary">
+										<a href="?p=cart&pid='.$product->product_id.'"><i class="fas fa-plus"></i> In winkelwagen</a>
+									</button>
+								</div>
+		  					</div>';
+			$this->html .= '</div>';
+		}
+		return $this->html;
+	}
+
+	public function createTable()
+	{		
+		$sql = "SHOW COLUMNS FROM products";
+		$headers = $this->dataHandler->readData($sql);
+		
+		$sql = "SELECT * FROM products WHERE sale = 0";
+		$rows = $this->dataHandler->readData($sql);
+
+        $this->html = "<div class='table-responsive'><table class='table table-bordered table-striped'>";
+
+        foreach($headers as $header)
+        { 
+            $this->html .= "<th>" . $header->Field . "</th>";
+        }
+
+        $this->html .= "<th>Action</th>";
+
+        $this->html .= "</tr>";
+
+        foreach($rows as $row)
+        {
+            $this->html .= "<tr>";
+
+            foreach($row as $key => $value)
+            {
+                $this->html .= "<td>" . $value . "</td>";
+            }
+
+            $this->html .= "<td><button class='btn btn-primary' type='submit'><a href='?action=read&id=".$row->product_id."' style='color: white;'>Read</a></button><button class='btn btn-warning' type='submit'><a href='?action=update&id=".$row->product_id."' style='color: white;'>Update</a></button><button class='btn btn-danger' type='submit'><a href='?action=delete&id=".$row->product_id."' style='color: white;'>Delete</a></button></td>";
+
+            $this->html .= "</tr>";
+        }
+        $this->html .= "</tr></table></div>";
+
+        return $this->html;
 	}
 }

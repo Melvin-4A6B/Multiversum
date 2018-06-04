@@ -11,21 +11,21 @@ class contactModel {
 		$this->htmlElements = new htmlElements();
 	}
 
-	public function contactForm() 
-	{	
-		$result = '';
+	public function contact()
+	{		
+        try
+        {
+			//$name = $this->htmlElements->sanitize($_REQUEST['naam']);
+			//$email = $this->htmlElements->sanitize($_REQUEST['email']);
+			//$subject = $this->htmlElements->sanitize($_REQUEST['onderwerp']);
+			//$message = $this->htmlElements->sanitize($_REQUEST['bericht']);
 
-		if(isset($_REQUEST['contact'])) 
-		{	
-			$name = $this->htmlElements->sanitize($_REQUEST['naam']);
-			$email = $this->htmlElements->sanitize($_REQUEST['email']);
-			$subject = $this->htmlElements->sanitize($_REQUEST['onderwerp']);
-			$message = $this->htmlElements->sanitize($_REQUEST['bericht']);
-
-			$result = $this->validateContactForm($name, $email, $subject, $message);	
-		} 
-
-		return $result;
+            //$result = mail();
+        }
+        catch(PDOException $e)
+        {
+            throw $e;
+        }
 	}
 
 	private function validateContactForm()
