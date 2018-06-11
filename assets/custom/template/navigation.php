@@ -53,9 +53,9 @@
         <li class="nav-item">
             <a class="nav-link" href="?p=cat"><i class="fas fa-book"></i> Catalogus</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="?p=contact"><i class="fas fa-envelope"></i> Contact</a>
-        </li>
+        </li> -->
         </ul>
     </div>
     </div>

@@ -10,12 +10,12 @@ class adminController {
     }
 
     public function collectReadProduct() {
-		$product = $this->adminModel->readProduct();
+		$app = $this->adminModel->readProduct();
 		include 'view/admin/admin.php';
 	}
 
 	public function collectReadProducts() {
-		$products = $this->adminModel->readProducts();
+		$app = $this->adminModel->readProducts();
 		include 'view/admin/admin.php';
 	}
 
@@ -29,10 +29,8 @@ class adminController {
 			$pcolor = $_POST['product_color'];
 			$platform = $_POST['product_platform'];
 			$image = $_POST['product_image'];
-			$color = $_POST['color'];
 
-
-			$products = $this->adminModel->updateProduct($code, $name, $desc, $price, $brand, $pcolor, $platform, $image, $color);
+			$app = $this->adminModel->updateProduct($code, $name, $desc, $price, $brand, $pcolor, $platform, $image);
 
 			$msg = 'Product: ' . $name . ' is succesvol geupdate.';
 			// header('Location: index.php?op=readall&msg=' . $msg);
@@ -40,14 +38,14 @@ class adminController {
 			exit();
 		} else {
 			$id = $_GET['id'];
-			$products = $this->adminModel->readProduct($id);
+			$app = $this->adminModel->readProduct($id);
 			include('view/update.php');
 		}
 	}
 
 	public function collectDeleteProduct() {
 			$id = $_GET['id'];
-			$products = $this->adminModel->deleteProduct($id);
+			$app = $this->adminModel->deleteProduct($id);
 			$msg = 'Row ' . $id . ' is succesvol gedelete';
 			// header('Location: index.php?op=readall&msg=' . $msg);
 

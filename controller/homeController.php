@@ -4,6 +4,7 @@ require_once('model/homeModel.php');
 require_once('controller/contactController.php');
 require_once('controller/catalogusController.php');
 require_once('controller/detailsController.php');
+require_once('controller/adminController.php');
 
 class homeController {
 
@@ -13,6 +14,7 @@ class homeController {
         $this->contactController = new contactController();
         $this->catalogusController = new catalogusController();
         $this->detailsController = new detailsController();
+        $this->adminController = new adminController();
         $this->router();
     }
 
@@ -41,6 +43,9 @@ class homeController {
             case 'contact':
                 $this->contact();
 
+            case 'admin':
+                $this->adminPrivileges();
+
             default:
                 $this->home();
         }
@@ -48,7 +53,7 @@ class homeController {
 
     public function home() 
     {
-        $app = $this->homeModel->displayHome();
+        $app = $this->homeModel->showSales();
 
         include_once('view/home.php');
         exit();
@@ -75,6 +80,14 @@ class homeController {
         $app = $this->contactController->makeContactForm();
 
         include_once('view/contact.php');
+        exit();
+    }
+
+    public function adminPrivileges()
+    {
+        $app = $this->adminController->collectReadProducts();
+
+        include_once('view/admin/admin.php');
         exit();
     }
 
