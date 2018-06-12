@@ -38,7 +38,7 @@ class detailsModel {
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="'.$detail->product_image.'" alt="'.$detail->product_name.'" width="300px" height="200px">
+                                        <img src="assets/custom/img/'.$detail->product_image.'" alt="'.$detail->product_name.'" width="300px" height="200px">
                                     </div>
                                     <div class="col-md-8 offset-md-2">
                                         <h5 class="card-title">'.$detail->product_name.'</h5>
