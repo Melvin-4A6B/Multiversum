@@ -9,6 +9,7 @@ class catalogusModel {
         $this->htmlElements = new htmlElements();
     }
 
+    //collect de catalogus via html elements
     public function collectCatalogus()
     {
         try

@@ -18,6 +18,7 @@ class homeController {
         $this->router();
     }
 
+    //simpel php router
     public function router()
     {
         $uri = $_GET['p'];
@@ -28,7 +29,8 @@ class homeController {
             header('Location: ?p=home');
             exit();
         }
-
+        
+        //switch tussen alle mogelijke cases (paginas)
         switch($uri)
         {
             case 'home':

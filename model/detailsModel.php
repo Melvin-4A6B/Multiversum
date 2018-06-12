@@ -11,6 +11,7 @@ class detailsModel {
         $this->dataHandler = new dataHandler();
     }
 
+    //Haal alle details van 1 product op
     public function getDetails()
     {
         if(isset($_GET['pid']) && $_GET['pid'] != '')

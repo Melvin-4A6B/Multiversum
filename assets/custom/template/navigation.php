@@ -11,7 +11,7 @@
         </ul>
         <ul class="navbar-nav mr-right">
         <li class="nav-item">
-            <a class="nav-link" href="?p=login"><i class="fas fa-user"></i> Login</a>
+            <a class="nav-link" href="?p=admin"><i class="fas fa-user"></i> Login</a>
         </li>
         </ul>
     </div>
@@ -25,7 +25,7 @@
         </div>  
         <div class="col-md-6" style="margin-top: 20px;">
         <form class="form-inline my-2 my-lg-0 max-width">
-            <input class="form-control mr-sm-2 search max-width" type="search" placeholder="Zoek producten..." aria-label="Search">
+            <input class="form-control mr-sm-2 search max-width" type="search" placeholder="Tijdelijk buiten gebruik..." aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" style="height: 50px; width: 50px; margin-left: -12px; border-color: #e5e5e5; border-left: none;" type="submit"><i class="fas fa-search"></i></button>
         </form>
         </div>  

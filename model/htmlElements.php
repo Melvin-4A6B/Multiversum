@@ -12,6 +12,7 @@ class htmlElements {
 		$this->dataHandler = new dataHandler();
 	}
 
+	//Sanitize method om script en html tags weg te halen
 	public function sanitize($content)
 	{
 		$dom = html_entity_decode($content);
@@ -23,15 +24,13 @@ class htmlElements {
 		return $dom;
 	}
 
+	//Haal alle producten op
 	public function displayProducts()
 	{
 		$sql = "SELECT * FROM products";
 		$products = $this->dataHandler->readAllData($sql);
 
 		$this->html = '';
-
-		// echo '<pre>';
-		// var_dump($products);
 
 		foreach($products as $product)
 		{
@@ -60,6 +59,7 @@ class htmlElements {
 		return $this->html;
 	}
 
+	//Maak een table
 	public function createTable()
 	{		
 		$sql = "SHOW COLUMNS FROM products";

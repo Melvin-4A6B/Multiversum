@@ -2,6 +2,8 @@
 
 require_once('controller/dataHandler.php');
 
+//Work in progres
+
 class adminModel {
 
 	public function __construct()
