@@ -29,10 +29,10 @@ class dataHandler {
 
     public function readAllData($sql) 
     {
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->_conn->prepare($sql);
         $stmt->execute();
     
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     function updateData($sql)
