@@ -3,10 +3,10 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="tel:065-247-9303"><i class="nav-link fas fa-mobile-alt"></i> (065) 247 9303</a>
+            <a class="nav-link"><i class="nav-link fas fa-mobile-alt"></i> (065) 247 9303</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="mailto:jack.jones@multiversum.com"><i class="nav-link fas fa-envelope-open"></i> jack.jones@multiversum.com</a>
+            <a class="nav-link"><i class="nav-link fas fa-envelope-open"></i> jack.jones@multiversum.com</a>
         </li>
         </ul>
         <ul class="navbar-nav mr-right">

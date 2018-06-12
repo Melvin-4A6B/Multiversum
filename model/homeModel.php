@@ -24,7 +24,7 @@ class homeModel {
 			$this->html .= '<div class="col-md-4 mb-4">';
 			$this->html .= '<div class="card" style="width: 18rem;">
 								<a href="?p=details&pid='.$sale->product_id.'">
-									<img class="card-img-top" src="assets/custom/img/'.$sale->product_image.'" alt="'.$sale->product_name.'">
+									<img class="card-img-top img-custom" src="assets/custom/img/'.$sale->product_image.'" alt="'.$sale->product_name.'">
 								</a>	
 								<div class="card-body">
                                     <h5 class="card-title"><a href="?p=details&pid='.$sale->product_id.'">'.$sale->product_name.'</a></h5>

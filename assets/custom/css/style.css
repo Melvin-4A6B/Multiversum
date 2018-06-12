@@ -1,11 +1,25 @@
 body, html, a {
     color: #2C3E50 !important;
-    font-family: 'Quicksand_Light';
+    font-family: 'Quicksand Light';
+    font-weight: bold;
 }
 
 /* Test stuff */
 .border-test {
     border: 1px solid red;
+}
+
+.btn-success {
+    background-color: #1ABC9C ;
+}
+
+.btn-success:hover {
+    background-color: #F1C40F;
+}
+
+.img-custom {
+    width: 250px;
+    height: 200px;
 }
 
 /* Navigation */
