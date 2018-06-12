@@ -4,7 +4,7 @@ require_once('model/homeModel.php');
 require_once('controller/contactController.php');
 require_once('controller/catalogusController.php');
 require_once('controller/detailsController.php');
-require_once('controller/adminController.php');
+require_once('model/adminModel.php');
 
 class homeController {
 
@@ -14,7 +14,7 @@ class homeController {
         $this->contactController = new contactController();
         $this->catalogusController = new catalogusController();
         $this->detailsController = new detailsController();
-        $this->adminController = new adminController();
+        $this->adminModel = new adminModel();
         $this->router();
     }
 
@@ -85,7 +85,7 @@ class homeController {
 
     public function adminPrivileges()
     {
-        $app = $this->adminController->collectReadProducts();
+        $app = $this->adminModel->displayAdmin();
 
         include_once('view/admin/admin.php');
         exit();
