@@ -4,6 +4,7 @@ require_once('model/homeModel.php');
 require_once('controller/contactController.php');
 require_once('controller/catalogusController.php');
 require_once('controller/detailsController.php');
+require_once('controller/searchController.php');
 require_once('model/adminModel.php');
 
 class homeController {
@@ -14,6 +15,7 @@ class homeController {
         $this->contactController = new contactController();
         $this->catalogusController = new catalogusController();
         $this->detailsController = new detailsController();
+        $this->searchController = new searchController();
         $this->adminModel = new adminModel();
         $this->router();
     }
@@ -23,31 +25,40 @@ class homeController {
     {
         $uri = $_GET['p'];
 
-        if(!isset($uri))
-        {
-            $uri = '';
-            header('Location: ?p=home');
-            exit();
-        }
+        // if(!isset($uri))
+        // {
+        //     $uri = '';
+        //     header('Location: ?p=home');
+        //     exit();
+        // }
         
         //switch tussen alle mogelijke cases (paginas)
         switch($uri)
         {
             case 'home':
                 $this->home();
+                break;
 
             case 'cat':
                 $this->cat();
-            
+                break;
+
             case 'details':
                 $this->details();
+                break;
 
             case 'contact':
                 $this->contact();
+                break;
+
+            case 'search':
+                $this->search();
+                break;
 
             case 'admin':
                 $this->adminPrivileges();
-
+                break;
+                
             default:
                 $this->home();
         }
@@ -82,6 +93,14 @@ class homeController {
         $app = $this->contactController->makeContactForm();
 
         include_once('view/contact.php');
+        exit();
+    }
+
+    public function search()
+    {
+        $app = $this->searchController->showSearch();
+
+        include_once('view/search.php');
         exit();
     }
 

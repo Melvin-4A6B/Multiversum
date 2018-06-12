@@ -24,9 +24,9 @@
         <img src="assets/custom/img/vr.svg" class="logo" alt="Multiversum">
         </div>  
         <div class="col-md-6" style="margin-top: 20px;">
-        <form class="form-inline my-2 my-lg-0 max-width">
-            <input class="form-control mr-sm-2 search max-width" type="search" placeholder="Tijdelijk buiten gebruik..." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" style="height: 50px; width: 50px; margin-left: -12px; border-color: #e5e5e5; border-left: none;" type="submit"><i class="fas fa-search"></i></button>
+        <form action="?p=search" method="post" class="form-inline my-2 my-lg-0 max-width">
+            <input class="form-control mr-sm-2 search max-width" type="text" name="searchinfo" placeholder="Zoek producten.." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" name="search" style="height: 50px; width: 50px; margin-left: -12px; border-color: #e5e5e5; border-left: none;" type="submit"><i class="fas fa-search"></i></button>
         </form>
         </div>  
         <div class="col-md-3" style="margin-top: 30px;">

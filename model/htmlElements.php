@@ -25,6 +25,49 @@ class htmlElements {
 	}
 
 	//Haal alle producten op
+	public function displaySearchProducts()
+	{
+		if(isset($_POST["search"])) {
+            
+            $searchinfo = $_POST["searchinfo"];
+
+            $sql = "SELECT * FROM products WHERE product_name LIKE '%$searchinfo%' OR product_brand LIKE '%$searchinfo%'";
+            $products = $this->dataHandler->readAllData($sql);
+
+            
+            // $products = [$result];
+        } 
+
+		$this->html = '';
+
+		foreach($products as $product)
+		{
+			if($product->sale == 0)
+			{
+				$price = '&euro;'.$product->product_price;
+			}
+			else
+			{
+				$price = '<span class="sale">&euro;'.$product->product_price.'</span> &euro;'.$product->sale_price;
+			}
+
+			$this->html .= '<div class="col-md-4 mb-4">';
+			$this->html .= '<div class="card" style="width: 18rem;">
+								<a href="?p=details&pid='.$product->product_id.'">
+									<img class="card-img-top img-custom" src="assets/custom/img/'.$product->product_image.'" alt="'.$product->product_name.'">
+								</a>	
+								<div class="card-body">
+									<h5 class="card-title"><a href="?p=details&pid='.$product->product_id.'">'.$product->product_name.'</a></h5>
+									<h5 class="card-title price">'. $price .'</h5>
+									<button class="btn btn-success" type="button"><a href="?p=cart&pid='.$product->product_id.'">In winkelwagen</a></button>
+								</div>
+		  					</div>';
+			$this->html .= '</div>';
+		}
+		return $this->html;
+	}
+
+	//Haal alle producten op
 	public function displayProducts()
 	{
 		$sql = "SELECT * FROM products";
