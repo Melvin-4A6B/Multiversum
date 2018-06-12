@@ -79,26 +79,26 @@ class htmlElements {
 		{
 			if($product->sale == 0)
 			{
-				$price = $product->product_price;
+				$price = '&euro;'.$product->product_price;
 			}
 			else
 			{
-				$price = $product->sale_price;
+				$price = '<span class="sale">&euro;'.$product->product_price.'</span> &euro;'.$product->sale_price;
 			}
 
-			$this->html .= '<div class="col-md-4 mb-4">';
-			$this->html .= '<div class="card" style="width: 18rem;">
-								<a href="?p=details&pid='.$product->product_id.'">
-									<img class="card-img-top img-custom" src="assets/custom/img/'.$product->product_image.'" alt="'.$product->product_name.'">
-								</a>	
-								<div class="card-body">
-									<h5 class="card-title"><a href="?p=details&pid='.$product->product_id.'">'.$product->product_name.'</a></h5>
-									<h5 class="card-title price">&euro;'.$price.'</h5>
-									<button class="btn btn-success" type="button"><a href="?p=cart&pid='.$product->product_id.'">In winkelwagen</a></button>
-								</div>
-		  					</div>';
-			$this->html .= '</div>';
+			$this->html .= "<div class='col-lg-4 col-md-6 col-sm-12 portfolio-item mb-3'>
+                       <div class='card h-100'> 
+                       <a href='?p=details&pid=$product->product_id'><img class='card-img-top p-3' src=assets/custom/img/$product->product_image alt='$product->product_name'></a>
+					   <div class='card-body d-flex align-items-start flex-column'>
+					   <h5><a href='?p=details&pid=$product->product_id'>$product->product_name</a></h5>
+					   <h5 class='card-title price'>$price</h5>
+					   <button class='btn btn-success mt-auto' type='button'><a href='?p=cart&pid=$product->product_id'>In winkelwagen</a></button>
+					   ";
+					   
+            $this->html .= "</div></div></div>";
 		}
+		$this->html .= "</div></div>";
+
 		return $this->html;
 	}
 

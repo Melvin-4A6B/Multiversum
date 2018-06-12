@@ -19,22 +19,23 @@ class homeModel {
 
 		$this->html = '';
 
-		foreach($sales as $sale)
+        $this->html .= "<div class='container'><div class='row d-flex align-items-stretch'>";
+		foreach ($sales as $sale)
 		{
-			$this->html .= '<div class="col-md-4 mb-4">';
-			$this->html .= '<div class="card" style="width: 18rem;">
-								<a href="?p=details&pid='.$sale->product_id.'">
-									<img class="card-img-top img-custom" src="assets/custom/img/'.$sale->product_image.'" alt="'.$sale->product_name.'">
-								</a>	
-								<div class="card-body">
-                                    <h5 class="card-title"><a href="?p=details&pid='.$sale->product_id.'">'.$sale->product_name.'</a></h5>
-									<h5 class="card-title price"><span class="sale">&euro;'.$sale->product_price.'</span> &euro;'.$sale->sale_price.'</h5>
-									<button class="btn btn-success" type="button"><a href="?p=cart&pid='.$sale->product_id.'">In winkelwagen</a></button>
-								</div>
-		  					</div>';
-			$this->html .= '</div>';
-		}
+            $this->html .= "<div class='col-lg-4 col-md-6 col-sm-12 portfolio-item mb-3'>
+                       <div class='card h-100'> 
+                       <a href='?p=details&pid=$sale->product_id'><img class='card-img-top p-3' src=assets/custom/img/$sale->product_image alt='$sale->product_name'></a>
+					   <div class='card-body d-flex align-items-start flex-column'>
+					   <h5><a href='?p=details&pid=$sale->product_id'>$sale->product_name</a></h5>
+					   <h5 class='card-title price'><span class='sale'>&euro;$sale->product_price</span> &euro;$sale->sale_price</h5>
+					   <button class='btn btn-success mt-auto' type='button'><a href='?p=cart&pid=$sale->product_id'>In winkelwagen</a></button>
+					   ";
+					   
+            $this->html .= "</div></div></div>";
+        }
+		$this->html .= "</div></div>";
+		
 		return $this->html;   
-    }
+		}
 
 }
