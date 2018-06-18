@@ -32,10 +32,10 @@ class homeController {
     //simpel php router
     public function router()
     {
-        $uri = $_GET['p'];
-        
+        $uri = explode('/', trim($_SERVER['REQUEST_URI'], "/"), 2);;
+
         //switch tussen alle mogelijke cases (paginas)
-        switch($uri)
+        switch($uri[0])
         {
             case 'home':
                 $this->home();
@@ -90,104 +90,81 @@ class homeController {
         }
     }
 
-    public function home() 
+    private function render($view, $app)
     {
-        $app = $this->homeModel->showSales();
-
-        
-        $content = file_get_contents('view/home.php');
-        // add check if template exists
-
-        // render template and replace values with data given
+        $content = file_get_contents($view);
         $render = str_replace('xxxTxxx', $app, $content);
 
-        //these three line could/should be a sperate render function/method/thingy
         require_once('assets/custom/template/header.php');
         echo $render;
         require_once('assets/custom/template/footer.php');
     }
 
+    public function home() 
+    {
+        $app = $this->homeModel->showSales();
+        $this->render('view/home.php', $app);
+    }
+
     public function cat() 
     {
         $app = $this->catalogusController->showCatalogus();
-
-        include_once('view/catalogus.php');
-        exit();
+        $this->render('view/catalogus.php', $app);
     }
 
     public function details()
     {
         $app = $this->detailsController->showDetails();
-
-        include_once('view/details.php');
-        exit();
+        $this->render('view/details.php', $app);
     }
 
     public function contact() 
     {
         $app = $this->contactController->makeContactForm();
-
-        include_once('view/contact.php');
-        exit();
+        $this->render('view/contact.php', $app);
     }
 
     public function search()
     {
         $app = $this->searchController->showSearch();
-
-        include_once('view/search.php');
-        exit();
+        $this->render('view/search.php', $app);
     }
 
     public function login()
     {
         $app = $this->loginController->validateLogin();
-
-        include_once('view/admin/login.php');
-        exit();
+        $this->render('view/admin/login.php', $app);
     }
 
     public function afmelden()
     {
         $app = $this->afmeldenModel->afmelden(); 
-
-        include_once('view/admin/login.php');
-        exit();
+        $this->render('view/admin/login.php', $app);
     }
 
     public function cart()
     {
         $app = $this->cartController->makeCart();
-
-        include_once('view/cart.php');
-        exit();
+        $this->render('view/cart.php', $app);
     }
 
     public function adminPrivileges()
     {
         $app = $this->adminModel->displayAdmin();
-
-        include_once('view/admin/admin.php');
-        exit();
+        $this->render('view/admin/admin.php', $app);
     }
 
     public function update()
     {
-
         $app = $this->adminController->collectUpdateProduct();
-
-        include_once('view/admin/update.php');
-        exit();
+        $this->render('view/admin/update.php', $app);
     }
 
 
     public function delete()
     {
-
         $app = $this->adminController->collectDeleteProduct();
-
-        include_once('view/admin/delete.php');
-        exit();
+        $this->render('view/admin/delete.php', $app);
     }
 
 }
