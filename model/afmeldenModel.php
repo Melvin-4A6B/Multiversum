@@ -6,7 +6,7 @@ class afmeldenModel {
     {
         session_start();
         session_destroy();
-        header('Location: index.php?p=home');
+        header('Location: index.php/home');
         exit();
     }
 

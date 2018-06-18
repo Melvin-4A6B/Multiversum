@@ -36,7 +36,7 @@
                 <td class="text-center"><strong>Totaal &euro;1.99</strong></td>
             </tr>
             <tr>
-                <td><a href="#" class="btn btn-success btn-custom"><i class="fas fa-angle-left"></i> Verder winkelen</a></td>
+                <td><a href="/cat" class="btn btn-success btn-custom"><i class="fas fa-angle-left"></i> Verder winkelen</a></td>
                 <td colspan="2" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><strong>Totaal &euro;1.99</strong></td>
                 <td><a href="#" class="btn btn-success btn-block btn-custom">Betalen <i class="fas fa-angle-right"></i></a></td>
