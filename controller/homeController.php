@@ -2,7 +2,7 @@
 
 require_once('model/homeModel.php');
 require_once('model/afmeldenModel.php');
-require_once('model/adminModel.php');
+require_once('controller/adminController.php');
 
 require_once('controller/contactController.php');
 require_once('controller/catalogusController.php');
@@ -25,6 +25,7 @@ class homeController {
         $this->afmeldenModel = new afmeldenModel();
         $this->cartController = new cartController();
         $this->adminModel = new adminModel();
+        $this->adminController = new adminController();
         $this->router();
     }
 
@@ -70,6 +71,18 @@ class homeController {
 
             case 'admin':
                 $this->adminPrivileges();
+                break;
+
+            case 'create':
+                $this->create();
+                break;
+
+            case 'update':
+                $this->update();
+                break;
+
+            case 'delete':
+                $this->delete();
                 break;
                 
             default:
@@ -155,6 +168,25 @@ class homeController {
         $app = $this->adminModel->displayAdmin();
 
         include_once('view/admin/admin.php');
+        exit();
+    }
+
+    public function update()
+    {
+
+        $app = $this->adminController->collectUpdateProduct();
+
+        include_once('view/admin/update.php');
+        exit();
+    }
+
+
+    public function delete()
+    {
+
+        $app = $this->adminController->collectDeleteProduct();
+
+        include_once('view/admin/delete.php');
         exit();
     }
 

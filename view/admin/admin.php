@@ -33,8 +33,8 @@
                     <td><?= $value->product_image; ?></td>
                     <td><?= $value->sale; ?></td>
                     <td><?= $value->sale_price; ?></td>
-                    <td><button class='btn btn-primary' type='submit'><a href="?action=read&id=<?= $value->product_id ?>" style='color: white;'>Update</a></button>
-                    <button class='btn btn-primary' type='submit'><a href="?action=read&id=<?= $value->product_id ?>" style='color: white;'>Delete</a></button></td>
+                    <td><button class='btn btn-primary' name='update' type='submit'><a href="?p=update&pid=<?= $value->product_id ?>" style='color: white;'>Update</a></button>
+                    <button class='btn btn-primary' name='delete' type='submit'><a href="?p=delete&pid=<?= $value->product_id ?>" style='color: white;'>Delete</a></button></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
