@@ -12,7 +12,9 @@ class catalogusController {
     public function showCatalogus()
     {
         $app = $this->catalogusModel->collectCatalogus();  
+        
         include_once('view/catalogus.php');
+        exit();
     }
 
 }

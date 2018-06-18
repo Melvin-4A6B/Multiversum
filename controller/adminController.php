@@ -48,13 +48,7 @@ class adminController {
 			$app = $this->adminModel->deleteProduct($id);
 			$msg = 'Row ' . $id . ' is succesvol gedelete';
 			// header('Location: index.php?op=readall&msg=' . $msg);
-
 			exit();
 	}
 
-	// public function collectcreateForm() {
-	// 	$products = $this->adminModel->createForm();
-
-	// 	include('view/HtmlElementsView.php');
-	// }
 }
