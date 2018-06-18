@@ -9,6 +9,13 @@ class adminController {
         $this->adminModel = new adminModel();
     }
 
+    public function collectCreateProduct() {
+    	if (isset($_POST["create"])) {
+    		echo 'test';
+    	}
+    }
+
+
     
 	public function collectUpdateProduct() {
 		if(isset($_POST["update"])) {
