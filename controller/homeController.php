@@ -6,6 +6,7 @@ require_once('controller/catalogusController.php');
 require_once('controller/detailsController.php');
 require_once('controller/searchController.php');
 require_once('model/adminModel.php');
+require_once('controller/adminController.php');
 
 class homeController {
 
@@ -17,6 +18,7 @@ class homeController {
         $this->detailsController = new detailsController();
         $this->searchController = new searchController();
         $this->adminModel = new adminModel();
+        $this->adminController = new adminController();
         $this->router();
     }
 
@@ -24,14 +26,7 @@ class homeController {
     public function router()
     {
         $uri = $_GET['p'];
-
-        // if(!isset($uri))
-        // {
-        //     $uri = '';
-        //     header('Location: ?p=home');
-        //     exit();
-        // }
-        
+  
         //switch tussen alle mogelijke cases (paginas)
         switch($uri)
         {
@@ -57,6 +52,18 @@ class homeController {
 
             case 'admin':
                 $this->adminPrivileges();
+                break;
+
+            case 'create':
+                $this->create();
+                break;
+
+            case 'update':
+                $this->update();
+                break;
+
+            case 'delete':
+                $this->delete();
                 break;
                 
             default:
@@ -109,6 +116,35 @@ class homeController {
         $app = $this->adminModel->displayAdmin();
 
         include_once('view/admin/admin.php');
+        exit();
+    }
+
+    // public function create()
+    // {
+
+    //     $app = $this->adminController->collectUpdateProduct();
+
+    //     include_once('view/admin/create.php');
+    //     exit();
+    // }
+
+
+    public function update()
+    {
+
+        $app = $this->adminController->collectUpdateProduct();
+
+        include_once('view/admin/update.php');
+        exit();
+    }
+
+
+    public function delete()
+    {
+
+        $app = $this->adminController->collectDeleteProduct();
+
+        include_once('view/admin/delete.php');
         exit();
     }
 
