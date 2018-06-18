@@ -27,6 +27,14 @@ class dataHandler {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    function readDataAssoc($sql)
+    {
+        $stmt = $this->_conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function readAllData($sql) 
     {
         $stmt = $this->_conn->prepare($sql);

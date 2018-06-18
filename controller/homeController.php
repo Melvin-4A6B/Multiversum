@@ -1,12 +1,16 @@
 <?php
 
 require_once('model/homeModel.php');
+require_once('model/afmeldenModel.php');
+require_once('controller/adminController.php');
+
 require_once('controller/contactController.php');
 require_once('controller/catalogusController.php');
 require_once('controller/detailsController.php');
 require_once('controller/searchController.php');
-require_once('model/adminModel.php');
-require_once('controller/adminController.php');
+require_once('controller/loginController.php');
+require_once('controller/cartController.php');
+
 
 class homeController {
 
@@ -17,6 +21,9 @@ class homeController {
         $this->catalogusController = new catalogusController();
         $this->detailsController = new detailsController();
         $this->searchController = new searchController();
+        $this->loginController = new loginController();
+        $this->afmeldenModel = new afmeldenModel();
+        $this->cartController = new cartController();
         $this->adminModel = new adminModel();
         $this->adminController = new adminController();
         $this->router();
@@ -26,7 +33,7 @@ class homeController {
     public function router()
     {
         $uri = $_GET['p'];
-  
+        
         //switch tussen alle mogelijke cases (paginas)
         switch($uri)
         {
@@ -49,6 +56,18 @@ class homeController {
             case 'search':
                 $this->search();
                 break;
+
+            case 'login':
+                $this->login();
+                break;
+
+            case 'afmelden':
+                $this->afmelden();
+                break;    
+
+            case 'cart':
+                $this->cart();
+                break;    
 
             case 'admin':
                 $this->adminPrivileges();
@@ -75,8 +94,17 @@ class homeController {
     {
         $app = $this->homeModel->showSales();
 
-        include_once('view/home.php');
-        exit();
+        
+        $content = file_get_contents('view/home.php');
+        // add check if template exists
+
+        // render template and replace values with data given
+        $render = str_replace('xxxTxxx', $app, $content);
+
+        //these three line could/should be a sperate render function/method/thingy
+        require_once('assets/custom/template/header.php');
+        echo $render;
+        require_once('assets/custom/template/footer.php');
     }
 
     public function cat() 
@@ -111,6 +139,30 @@ class homeController {
         exit();
     }
 
+    public function login()
+    {
+        $app = $this->loginController->validateLogin();
+
+        include_once('view/admin/login.php');
+        exit();
+    }
+
+    public function afmelden()
+    {
+        $app = $this->afmeldenModel->afmelden(); 
+
+        include_once('view/admin/login.php');
+        exit();
+    }
+
+    public function cart()
+    {
+        $app = $this->cartController->makeCart();
+
+        include_once('view/cart.php');
+        exit();
+    }
+
     public function adminPrivileges()
     {
         $app = $this->adminModel->displayAdmin();
@@ -118,16 +170,6 @@ class homeController {
         include_once('view/admin/admin.php');
         exit();
     }
-
-    // public function create()
-    // {
-
-    //     $app = $this->adminController->collectUpdateProduct();
-
-    //     include_once('view/admin/create.php');
-    //     exit();
-    // }
-
 
     public function update()
     {
