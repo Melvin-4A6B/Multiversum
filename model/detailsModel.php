@@ -51,7 +51,7 @@ class detailsModel {
                                         <p class="card-text">Merk: '.$detail->product_brand.'</p>
                                         <p class="card-text">Kleur: '.$detail->product_color.'</p>
                                         <p class="card-text">Platform: '.$detail->product_platform.'</p>
-                                        <button class="btn btn-success" type="button"><a href="/cart&pid='.$detail->product_id.'">In winkelwagen</a></button>
+                                        <button class="btn btn-success" type="button"><a href="/cart?pid='.$detail->product_id.'">In winkelwagen</a></button>
                                     </div>
                                 </div>
                             </div>

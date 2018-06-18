@@ -32,7 +32,7 @@ class homeController {
     //simpel php router
     public function router()
     {
-        $uri = explode('/', trim($_SERVER['REQUEST_URI'], "/"), 2);;
+        $uri = explode('/', explode("?", trim($_SERVER['REQUEST_URI'], "/"))[0], 2);
 
         //switch tussen alle mogelijke cases (paginas)
         switch($uri[0])

@@ -12,7 +12,7 @@ class detailsController {
     public function showDetails()
     {
         $app = $this->detailsModel->getDetails();
-        include_once('view/details.php');
+        return $app;
     }
 
 }
