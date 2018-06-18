@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 12 jun 2018 om 10:28
+-- Gegenereerd op: 18 jun 2018 om 11:55
 -- Serverversie: 10.1.30-MariaDB
 -- PHP-versie: 7.2.2
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `multiversum`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `admins`
+--
+
+CREATE TABLE `admins` (
+  `admin_id` int(11) NOT NULL,
+  `admin_first_name` varchar(255) NOT NULL,
+  `admin_last_name` varchar(255) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `admin_password` varchar(255) NOT NULL,
+  `admin_created_at` datetime NOT NULL,
+  `admin_last_login` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `admins`
+--
+
+INSERT INTO `admins` (`admin_id`, `admin_first_name`, `admin_last_name`, `admin_email`, `admin_password`, `admin_created_at`, `admin_last_login`) VALUES
+(1, 'Melvin', 'van Zutphen', 'melvin@test.com', 'test', '2018-06-15 14:52:27', '2018-06-15 14:52:39');
 
 -- --------------------------------------------------------
 
@@ -114,6 +137,12 @@ INSERT INTO `products` (`product_id`, `ean_code`, `product_name`, `product_descr
 --
 
 --
+-- Indexen voor tabel `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
 -- Indexen voor tabel `customers`
 --
 ALTER TABLE `customers`
@@ -136,6 +165,12 @@ ALTER TABLE `products`
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
+
+--
+-- AUTO_INCREMENT voor een tabel `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT voor een tabel `customers`
