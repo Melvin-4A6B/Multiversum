@@ -12,9 +12,7 @@ class cartController {
     public function makeCart()
     {
         $app = $this->cartModel->showCart();
-
-        include_once('view/cart.php');
-        exit();
+        return $app;
     }
 
 }
