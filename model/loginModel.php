@@ -33,7 +33,7 @@ class loginModel {
             if($result)
             {
                 $_SESSION['uid'] = $result[0];
-                header('Location: '.$_SERVER["PHP_SELF"].'?p=home');
+                header('Location: '.$_SERVER["PHP_SELF"].'/home');
             }
             else
             {

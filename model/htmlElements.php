@@ -53,13 +53,13 @@ class htmlElements {
 
 			$this->html .= '<div class="col-md-4 mb-4">';
 			$this->html .= '<div class="card" style="width: 18rem;">
-								<a href="?p=details&pid='.$product->product_id.'">
+								<a href="/details&pid='.$product->product_id.'">
 									<img class="card-img-top img-custom" src="assets/custom/img/'.$product->product_image.'" alt="'.$product->product_name.'">
 								</a>	
 								<div class="card-body">
-									<h5 class="card-title"><a href="?p=details&pid='.$product->product_id.'">'.$product->product_name.'</a></h5>
+									<h5 class="card-title"><a href="/details?pid='.$product->product_id.'">'.$product->product_name.'</a></h5>
 									<h5 class="card-title price">'. $price .'</h5>
-									<button class="btn btn-success" type="button"><a href="?p=cart&pid='.$product->product_id.'">In winkelwagen</a></button>
+									<button class="btn btn-success" type="button"><a href="/cart?pid='.$product->product_id.'">In winkelwagen</a></button>
 								</div>
 		  					</div>';
 			$this->html .= '</div>';
@@ -88,11 +88,11 @@ class htmlElements {
 
 			$this->html .= "<div class='col-lg-4 col-md-6 col-sm-12 portfolio-item mb-3'>
                        <div class='card h-100'> 
-                       <a href='?p=details&pid=$product->product_id'><img class='card-img-top p-3' src=assets/custom/img/$product->product_image alt='$product->product_name'></a>
+                       <a href='/details&pid=$product->product_id'><img class='card-img-top p-3' src=assets/custom/img/$product->product_image alt='$product->product_name'></a>
 					   <div class='card-body d-flex align-items-start flex-column'>
-					   <h5><a href='?p=details&pid=$product->product_id'>$product->product_name</a></h5>
+					   <h5><a href='/details?pid=$product->product_id'>$product->product_name</a></h5>
 					   <h5 class='card-title price'>$price</h5>
-					   <button class='btn btn-success mt-auto' type='button'><a href='?p=cart&pid=$product->product_id'>In winkelwagen</a></button>
+					   <button class='btn btn-success mt-auto' type='button'><a href='/cart?pid=$product->product_id'>In winkelwagen</a></button>
 					   ";
 					   
             $this->html .= "</div></div></div>";
@@ -139,7 +139,7 @@ class htmlElements {
 				}
             }
 
-            $this->html .= "<td><button class='btn btn-primary' type='submit'><a href='?action=read&id=".$row->product_id."' style='color: white;'>Read</a></button><button class='btn btn-warning' type='submit'><a href='?action=update&id=".$row->product_id."' style='color: white;'>Update</a></button><button class='btn btn-danger' type='submit'><a href='?action=delete&id=".$row->product_id."' style='color: white;'>Delete</a></button></td>";
+            $this->html .= "<td><button class='btn btn-primary' type='submit'><a href='/read?pid=".$row->product_id."' style='color: white;'>Read</a></button><button class='btn btn-warning' type='submit'><a href='?action=update&id=".$row->product_id."' style='color: white;'>Update</a></button><button class='btn btn-danger' type='submit'><a href='?action=delete&id=".$row->product_id."' style='color: white;'>Delete</a></button></td>";
 
             $this->html .= "</tr></tbody>";
         }

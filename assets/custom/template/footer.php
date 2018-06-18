@@ -18,8 +18,8 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Pagina's</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="?p=home"><i class="fas fa-home"></i>Home</a></li>
-						<li><a href="?p=cat"><i class="fas fa-book"></i>Catalogus</a></li>
+						<li><a href="/home"><i class="fas fa-home"></i>Home</a></li>
+						<li><a href="/cat"><i class="fas fa-book"></i>Catalogus</a></li>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Contact</h5>
