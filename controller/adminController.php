@@ -44,7 +44,7 @@ class adminController {
     
 	public function collectUpdateProduct() {
 		if(isset($_POST["update"])) {
-			$code = $_POST['ean_code'];
+    		$code = $_POST['ean_code'];
 			$name = $_POST['product_name'];
 			$desc = $_POST['product_description'];
 			$price = $_POST['product_price'];
@@ -55,22 +55,36 @@ class adminController {
 			$sale = $_POST['sale'];
 			$sprice = $_POST['sale_price'];
 
-			$app = $this->adminModel->updateProduct($code, $name, $desc, $price, $brand, $pcolor, $platform, $image, $sale, $sprice);
-			exit();
-		} else {
 			$id = $_GET['pid'];
-			$sql = 'SELECT * FROM products WHERE product_id = "$id"';
-			$app = $this->adminModel->collectReadProduct($sql);
-	        include 'view/admin/admin.php';
-	        exit();
-		}
+			
+			if($sale == 'ja') {
+				$sale = 1;
+			} else {
+				$sale = 0;
+			}
+
+			$sql = 'UPDATE products SET ean_code = "'.$code.'", product_name = "'.$name.'", product_description = "'.$desc.'", product_price = "'.$price.'", product_brand = "'.$brand.'", product_color =  "'.$pcolor.'", product_platform = "'.$platform.'", product_image = "'.$image.'", sale = "'.$sale.'", sale_price =  "'.$sprice.'" WHERE product_id = "'.$id.'" ';
+			$app = $this->dataHandler->updateData($sql);
+    	} else {
+    		$id = $_GET['pid'];
+			$sql = "SELECT * FROM products WHERE product_id = '$id'";
+			$updateProduct = $this->dataHandler->readDataAssoc($sql)[0];
+    		$app = $this->adminModel->updateProduct($updateProduct);
+    	}
+
+    	
+    	return $app;
+
 	}
 
 	public function collectDeleteProduct() {
-			$id = $_GET['id'];
-			$app = $this->adminModel->deleteProduct($id);
-			$msg = 'Row ' . $id . ' is succesvol gedelete';
-			// header('Location: index.php?op=readall&msg=' . $msg);
-			exit();
-	}
+			if(isset($_GET['delete'])) {
+				$id = $_GET['pid'];
+				$sql = "DELETE FROM prodcuts WHERE product_id = '$id'";
+
+				$app = $this->adminModel->deleteProduct();
+			} else {
+				$app = $this->adminModel->deleteProduct();
+			}
+		}
 }

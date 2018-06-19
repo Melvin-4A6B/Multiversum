@@ -47,6 +47,7 @@ class dataHandler {
     {
         $stmt = $this->_conn->prepare($sql);
         $stmt->execute();
+        return $this->_conn->lastInsertId();
     }
 
     function deleteData($sql)
