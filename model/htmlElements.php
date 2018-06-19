@@ -88,7 +88,7 @@ class htmlElements {
 
 			$this->html .= "<div class='col-lg-4 col-md-6 col-sm-12 portfolio-item mb-3'>
                        <div class='card h-100'> 
-                       <a href='/details&pid=$product->product_id'><img class='card-img-top p-3' src=assets/custom/img/$product->product_image alt='$product->product_name'></a>
+                       <a href='/details?pid=$product->product_id'><img class='card-img-top p-3' src=assets/custom/img/$product->product_image alt='$product->product_name'></a>
 					   <div class='card-body d-flex align-items-start flex-column'>
 					   <h5><a href='/details?pid=$product->product_id'>$product->product_name</a></h5>
 					   <h5 class='card-title price'>$price</h5>
