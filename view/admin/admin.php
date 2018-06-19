@@ -1,7 +1,7 @@
 <?php require_once('assets/custom/template/header.php'); ?>
 
 <div class="container">
-    <button name='delete' type='submit' href="/create'>Create</button>
+    <button class="btn btn-success mb-4" name='delete' type='submit' href="/create">Create</button>
     <div class="table-responsive mb-4">
         <table class="table table-bordered">
             <thead>
@@ -17,7 +17,8 @@
                     <th>Afbeelding</th>
                     <th>Aanbieding</th>
                     <th>Aanbiedings prijs</th>
-                    <th>Action</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,8 +35,8 @@
                     <td><?= $value->product_image; ?></td>
                     <td><?= $value->sale; ?></td>
                     <td><?= $value->sale_price; ?></td>
-                    <td><button class='btn btn-primary' name='update' type='submit'><a href="/update?pid=<?= $value->product_id ?>" style='color: white;'>Update</a></button>
-                    <button class='btn btn-primary' name='delete' type='submit'><a href="/delete?pid=<?= $value->product_id ?>" style='color: white;'>Delete</a></button></td>
+                    <td><button class='btn btn-success' name='update' type='submit'><a href="/update?pid=<?= $value->product_id ?>" style='color: white;'>Update</a></button></td>
+                    <td><button class='btn btn-success' name='delete' type='submit'><a href="/delete?pid=<?= $value->product_id ?>" style='color: white;'>Delete</a></button></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
