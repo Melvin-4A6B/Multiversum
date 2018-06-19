@@ -154,6 +154,15 @@ class homeController {
         $this->render('view/admin/admin.php', $app);
     }
 
+    public function create()
+    {
+
+        $app = $this->adminController->collectCreateProduct();
+
+        include_once('view/admin/create.php');
+        exit();
+    }
+
     public function update()
     {
         $app = $this->adminController->collectUpdateProduct();

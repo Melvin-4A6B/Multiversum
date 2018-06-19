@@ -31,12 +31,23 @@ class adminModel {
         exit();
 	}
 
-	
-	public function collectDeleteProduct() {
-			$id = $_GET['id'];
-            $app = $this->dataHandler->deleteData($id);
-            include('view/admin.php');
-            exit();       
+    public function createProduct() {
+
+    }
+
+    public function updateProduct() {
+        $id = $_GET['id'];
+        $app = $this->dataHandler->readAllData($sql);
+        include('view/admin.php');
+        exit();
+
+    }
+
+	public function deleteProduct() {
+		$id = $_GET['id'];
+        $app = $this->dataHandler->deleteData($id);
+        include('view/admin.php');
+        exit();       
 	}
 
 }
