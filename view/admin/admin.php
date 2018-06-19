@@ -1,7 +1,7 @@
 <?php require_once('assets/custom/template/header.php'); ?>
 
 <div class="container">
-    <button class="btn btn-success mb-4" name='delete' type='submit' href="/create">Create</button>
+    <button class="btn btn-success mb-4" type='button'><a href='/create'>Create</a></button>
     <div class="table-responsive mb-4">
         <table class="table table-bordered">
             <thead>
