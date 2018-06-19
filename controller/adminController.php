@@ -80,11 +80,9 @@ class adminController {
 	public function collectDeleteProduct() {
 			if(isset($_GET['delete'])) {
 				$id = $_GET['pid'];
-				$sql = "DELETE FROM prodcuts WHERE product_id = '$id'";
+				$sql = "DELETE FROM products WHERE product_id = '$id'";
 
-				$app = $this->adminModel->deleteProduct();
-			} else {
-				$app = $this->adminModel->deleteProduct();
-			}
+				$app = $this->adminModel->deleteProduct($sql);
+			} 
 		}
 }

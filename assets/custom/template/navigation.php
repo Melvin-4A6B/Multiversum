@@ -58,7 +58,14 @@
         <div class="col-md-1 offset-md-2" style="margin-top: 30px;">
             <a href="/cart">
                 <i class="fas fa-shopping-cart" style="font-size: 30px; color: #2C3E50;"></i>
-                <span class="badge badge-secondary"><?= $_SESSION['amountInCart']; ?></span>
+                <?php 
+                    if (isset($_SESSION['amountInCart'])) {
+                        $amount = $_SESSION['amountInCart'];
+                    } else {
+                        $amount = 0;
+                    }
+                ?>
+                <span class="badge badge-secondary"><?= $amount; ?></span>
             </a>
         </div>
     </div>

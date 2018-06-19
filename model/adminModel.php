@@ -142,9 +142,9 @@ class adminModel {
         return $this->html;
      }
 
-	public function deleteProduct() {
-		$id = $_GET['pid'];
-        $app = $this->dataHandler->deleteData($id);
+	public function deleteProduct($sql) {
+		
+        $app = $this->dataHandler->deleteData($sql);
         include('view/admin.php');
         exit();       
 	}
