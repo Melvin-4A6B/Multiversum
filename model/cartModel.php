@@ -17,6 +17,7 @@ class cartModel {
 
     public function showCart()
     {
+
         $this->html = '';
 
         $cart = isset($_COOKIE["cart"]) ? unserialize($_COOKIE["cart"]) : [];
@@ -54,18 +55,24 @@ class cartModel {
 
         foreach($cartItems as $cartItem)
         {
-            if(isset($_POST['setQuantity']))
+
+            if(isset($_GET['a']) && $_GET['a'] != '')
             {
-                $quantity = $_POST['aantal'];
+                if($_GET['a'] == 'delete')
+                {
+                    die($_GET['pid']);
+                    unset($cart[$_GET['pid']]);
+                }
+
+                if($_GET['a'] == 'update')
+                {
+                    $quantity = $_GET['a'];
+                }
+                
             }
             else
             {
                 $quantity = 1;
-            }
-
-            if(isset($_POST['deleteItem']))
-            {
-                unset($cart[$cartItem->product_id]);
             }
 
             $subTotal = $cartItem->product_price * $quantity;
@@ -91,14 +98,14 @@ class cartModel {
                         </div>
                     </td>
                     <td data-th="Price">&euro;'.$cartItem->product_price.'</td>
-                    <form method="post" action="">
+                    <form method="get" action="">
                         <td data-th="Quantity">
-                            <input type="number" name="aantal" class="form-control text-center" value="'.$quantity.'">
+                            <input type="number" class="form-control text-center" value="'.$quantity.'">
                         </td>
                         <td data-th="Subtotal" class="text-center">&euro;'.$subTotal.'</td>
                         <td class="actions" data-th="">
-                            <button type="submit" name="setQuantity" class="btn btn-info btn-sm"><i class="fas fa-sync"></i></button>
-                            <button type="submit" name="deleteItem" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>								
+                            <button class="btn btn-info btn-sm"><a href="?a=update&pid='.$cartItem->product_id.'"><i class="fas fa-sync"></i></a></button>
+                            <button class="btn btn-danger btn-sm"><a href="?a=delete&pid='.$cartItem->product_id.'"><i class="fas fa-trash-alt"></i></a></button>								
                         </td>
                     </form>  
                 </tr>
