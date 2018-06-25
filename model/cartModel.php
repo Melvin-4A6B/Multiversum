@@ -52,6 +52,10 @@ class cartModel {
         ';
 
         $_SESSION['amountInCart'] = sizeof($cart);
+        if(sizeof($cart) < 1) {
+            die('leeg');
+
+        }
 
         foreach($cartItems as $cartItem)
         {
