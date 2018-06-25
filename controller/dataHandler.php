@@ -16,7 +16,7 @@ class dataHandler {
     function createData($sql)
     {
         $this->_conn->exec($sql);
-        return $this->_conn->lastInsertId();
+        return "Product " . $this->_conn->lastInsertId() . " succesvol toegevoegd.";
     }
 
     function readData($sql)

@@ -46,7 +46,7 @@ class adminModel {
             </div>
             <div class="form-group">
                 <label for="product_description">Beschrijving</label>
-                <textarea class="form-control" name="product_description" style="resize: none;">Productbeschrijving..</textarea>
+                <textarea class="form-control" name="product_description" placeholder="Productbeschrijving.." style="resize: none;"></textarea>
             </div>
             <div class="form-group">
                 <label for="product_price">Prijs</label>
@@ -68,18 +68,7 @@ class adminModel {
                 <label for="product_image">Afbeelding</label>
                 <input class="form-control" type="file" name="product_image" autocomplete="off" required>
             </div>
-            <div class="form-group">
-                <label for="sale">Aanbieding</label>
-                <input type="radio" name="sale" value="ja">
-                <label for="ja">Ja</label>
-                <input type="radio" name="sale" value="nee">
-                <label for="nee">Nee</label>
-            </div>
-            <div class="form-group">
-                <label for="sale_price">Aanbiedingsprijs</label>
-                <input class="form-control" type="decimal" name="sale_price" placeholder="Aanbiedingsprijs" autocomplete="off" required>
-            </div>
-            <input class="btn btn-success form-control" type="submit" value="create" name="create">
+            <input class="btn btn-success form-control" type="submit" value="Product toevoegen" name="create">
         </form>
         ';
 
@@ -101,7 +90,8 @@ class adminModel {
             </div>
             <div class="form-group">
                 <label for="product_description">Beschrijving</label>
-                <textarea class="form-control" name="product_description" value="'.$updateProduct['product_description'].'" style="resize: none;"></textarea>
+                <textarea class="form-control" name="product_description" style="resize: none;">'.$updateProduct['product_description'].'
+                </textarea>
             </div>
             <div class="form-group">
                 <label for="product_price">Prijs</label>
@@ -124,17 +114,6 @@ class adminModel {
         
                 <input class="form-control" type="file" name="product_image" autocomplete="off">
             </div>
-            <div class="form-group">
-                <label for="sale">Aanbieding</label>
-                <input type="radio" name="sale" value="ja">
-                <label for="ja">Ja</label>
-                <input type="radio" name="sale" value="nee">
-                <label for="nee">Nee</label>
-            </div>
-            <div class="form-group">
-                <label for="sale_price">Aanbiedingsprijs</label>
-                <input class="form-control" value="'.$updateProduct['sale_price'].'" type="decimal" name="sale_price" placeholder="Aanbiedingsprijs" autocomplete="off">
-            </div>
             <input class="btn btn-success form-control" type="submit" value="Update" name="update">
         </form>
         ';
@@ -145,7 +124,7 @@ class adminModel {
 	public function deleteProduct($sql) {
 		
         $app = $this->dataHandler->deleteData($sql);
-        include('view/admin.php');
+        include('view/admin/admin.php');
         exit();       
 	}
 
