@@ -53,7 +53,7 @@ class htmlElements {
 
 			$this->html .= '<div class="col-md-4 mb-4">';
 			$this->html .= '<div class="card" style="width: 18rem;">
-								<a href="/details&pid='.$product->product_id.'">
+								<a href="/details?pid='.$product->product_id.'">
 									<img class="card-img-top img-custom" src="assets/custom/img/'.$product->product_image.'" alt="'.$product->product_name.'">
 								</a>	
 								<div class="card-body">
