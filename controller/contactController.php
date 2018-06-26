@@ -2,6 +2,8 @@
 
 require_once('model/contactModel.php');
 
+//Not used anymore
+
 class contactController {
 
 	public function __construct()

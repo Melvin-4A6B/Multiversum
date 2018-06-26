@@ -4,16 +4,26 @@ require_once('controller/dataHandler.php');
 
 class homeModel {
 
+    //Instantiate the html property
     public $html;
 
     public function __construct()
     {
+        /**
+         * Make a new instance of the dataHandler class 
+         */
+
         $this->dataHandler = new dataHandler();
     }
 
-	//Laat alle aanbiedingen zien
     public function showSales()
     {
+        /**
+         * Shows the products in sale on the home page
+         * 
+         * @return html
+         */
+
         $sql = "SELECT * FROM products WHERE sale = '1' LIMIT 9";
 		$sales = $this->dataHandler->readData($sql);
 

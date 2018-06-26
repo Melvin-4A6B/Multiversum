@@ -2,38 +2,68 @@
 
 require_once('controller/dataHandler.php');
 
-//Work in progress
-
 class adminModel {
 
+    //Instantiate the html property
     public $html;
 
 	public function __construct()
     {
+        /**
+         * Make a new instance of the class 
+         */
+
         $this->dataHandler = new dataHandler();
     }
 
     public function displayAdmin()
     {
+        /**
+		 * Collect the products and stores the values in app
+         * 
+         * @return app
+		 */
+
         $app = $this->collectReadProducts();
         include 'view/admin/admin.php';
         exit();
     }
 
-    public function collectReadProduct($sql) {
+    public function collectReadProduct($sql) 
+    {
+        /**
+		 * Calls the readData method and stores the value in app
+         * 
+         * @return app
+		 */
+
 		$app = $this->dataHandler->readData($sql);
         include 'view/admin/admin.php';
         exit();
 	}
 
-	public function collectReadProducts() {
+    public function collectReadProducts() 
+    {
+        /**
+		 * Calls the readAllData method and stores the value in app
+         * 
+         * @return app
+		 */
+
         $sql = "SELECT * FROM products";
 		$app = $this->dataHandler->readAllData($sql);
         include 'view/admin/admin.php';
         exit();
 	}
 
-    public function createProduct() {
+    public function createProduct() 
+    {
+        /**
+		 * Create a product form
+         * 
+         * @return html
+		 */
+
         $this->html = '
         <form action="" method="POST">
             <div class="form-group">
@@ -77,7 +107,16 @@ class adminModel {
 
     }
 
-    public function updateProduct($updateProduct) {
+    public function updateProduct($updateProduct) 
+    {
+        /**
+		 * Create a update form and fill the inputs from the param
+         * 
+         * @param updateProduct
+         * 
+         * @return html
+		 */
+
         $this->html = '
         <form action="" method="POST">
             <div class="form-group">
@@ -121,7 +160,13 @@ class adminModel {
         return $this->html;
      }
 
-	public function deleteProduct($sql) {
+    public function deleteProduct($sql) 
+    {
+        /**
+		 * Calls the deleteData method and stores the value in app
+         * 
+         * @return app
+		 */
 		
         $app = $this->dataHandler->deleteData($sql);
         include('view/admin/admin.php');

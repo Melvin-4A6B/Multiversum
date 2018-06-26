@@ -7,13 +7,22 @@ class adminController {
 
 	public function __construct()
     {
+		/**
+		 * Make an new instance of the classes
+		 */
         $this->adminModel = new adminModel();
         $this->dataHandler = new dataHandler();
     }
 
     public function collectCreateProduct() {
 
-  //   	$target_dir = "assets/custom/img/";
+		/**
+		 * Checks if the create form is submitted
+		 * 
+		 * @return app
+		 */
+
+  		// $target_dir = "assets/custom/img/";
 		// $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
 		// $uploadOk = 1;
 		// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -79,6 +88,13 @@ class adminController {
 
     
 	public function collectUpdateProduct() {
+
+		/**
+		 * Checks if the update form is submitted
+		 * 
+		 * @return app
+		 */
+
 		if(isset($_POST["update"])) {
     		$code = $_POST['ean_code'];
 			$name = $_POST['product_name'];
@@ -107,14 +123,18 @@ class adminController {
 	}
 
 	public function collectDeleteProduct() {
-		
-			// if(isset($_GET['pid'])) {
-				$id = $_GET['pid'];
-				$sql = "DELETE FROM products WHERE product_id = '$id'";
 
-				$app = $this->adminModel->deleteProduct($sql);
-				header("Location: /admin");
-			// } 
+		/**
+		 * Checks if the delete button is pressed
+		 * 
+		 * @return app
+		 */
+		
+			$id = $_GET['pid'];
+			$sql = "DELETE FROM products WHERE product_id = '$id'";
+
+			$app = $this->adminModel->deleteProduct($sql);
+			header("Location: /admin");
 
 			return $app;
 		}

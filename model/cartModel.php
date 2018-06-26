@@ -3,31 +3,55 @@ require_once('controller/dataHandler.php');
 
 class cartModel {
 
+    //Instatiate the html property
     public $html;
 
     public function __construct()
     {
+        /**
+         * Make a new instance of the dataHandler class
+         */
+
         $this->dataHandler = new dataHandler();
     }
 
     private function makeCookie($value)
     {
+        /**
+         * Set a cookie for 1 month by the value param
+         * 
+         * @param value
+         */
+
         setcookie("cart", $value, time() + (86400 * 30), "/");//Set cookie for 1 month
     }
 
     public function showCart()
     {
+        /**
+		 * Show the entire cart (Could be / Should be seperated methods)
+         * 
+         * @return html
+		 */
 
         $this->html = '';
 
+        //Check if there is already a cart cookie, if so serialize it else set it as a empty array
         $cart = isset($_COOKIE["cart"]) ? unserialize($_COOKIE["cart"]) : [];
+
+        //Unserialize to make it viewable again
+
+        //Make sure no duplicate entries exists
         $cart = array_unique($cart);
 
         if(isset($_GET['pid']) && $_GET['pid'] != '')
         {
             $id = $_GET['pid'];
+
+            //Push the new id into the cart cookie
             array_push($cart, $id);
 
+            //Make a string to feed it to the cookie
             $cartString = serialize($cart);
             $this->makeCookie($cartString);
         }
@@ -51,15 +75,17 @@ class cartModel {
                 <tbody>
         ';
 
+        //Get the amount of products wich are in the cart
         $_SESSION['amountInCart'] = sizeof($cart);
-        if(sizeof($cart) < 1) {
-            die('leeg');
+        if(sizeof($cart) < 1) 
+        {
+            echo 'Uw winkelwagen is leeg';
 
         }
 
         foreach($cartItems as $cartItem)
         {
-
+            //Work in progress
             if(isset($_GET['a']) && $_GET['a'] != '')
             {
                 if($_GET['a'] == 'delete')
@@ -72,7 +98,7 @@ class cartModel {
                 {
                     $quantity = $_GET['a'];
                 }
-                
+            //####################################### 
             }
             else
             {
@@ -83,14 +109,16 @@ class cartModel {
 
             if($_SESSION['amountInCart'] > 1)
             {
-                $shipping = 'Gratis';    
+                $shipping = 'Gratis';
+                $shippingPrice = 0;
             }
             else
             {
                 $shipping = '&euro;' . 6.95;
+                $shippingPrice = 6.95;
             }
 
-            $total = $total + ($subTotal);
+            $total = $total + $shippingPrice + ($subTotal);
 
             $this->html .='
                 <tr>

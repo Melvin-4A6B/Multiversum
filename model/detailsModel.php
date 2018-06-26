@@ -4,16 +4,27 @@ require_once('controller/dataHandler.php');
 
 class detailsModel {
 
+    //Instantiate the html property
     public $html;
 
     public function __construct()
     {
+        /**
+         * Make a new instance of the dataHandler class 
+         */
+
         $this->dataHandler = new dataHandler();
     }
 
-    //Haal alle details van 1 product op
     public function getDetails()
     {
+        /**
+         * Get the details of product based on the get variable PID
+         * 
+         * @return html
+         */
+
+         //Checks if GET pid exists
         if(isset($_GET['pid']) && $_GET['pid'] != '')
         {
             $id = $_GET['pid'];

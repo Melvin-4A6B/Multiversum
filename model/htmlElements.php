@@ -5,16 +5,28 @@ require_once('controller/dataHandler.php');
 
 class htmlElements {
 
+	//Instantiate the html property
 	public $html;
 
 	public function __construct() 
 	{	
+		/**
+         * Make a new instance of the class 
+         */
+
 		$this->dataHandler = new dataHandler();
 	}
 
-	//Sanitize method om script en html tags weg te halen
 	public function sanitize($content)
 	{
+		/**
+         * Simple (not finished) sanitize method
+		 * 
+		 * @param content
+		 * 
+		 * @return dom
+         */
+
 		$dom = html_entity_decode($content);
 		$dom = preg_replace('#<script(.?)>(.?)</script>#is', '', $dom);
 		$dom = strip_tags($dom, '<script>');
@@ -24,18 +36,19 @@ class htmlElements {
 		return $dom;
 	}
 
-	//Haal alle producten op
 	public function displaySearchProducts()
 	{
-		if(isset($_POST["search"])) {
-            
-            $searchinfo = $_POST["searchinfo"];
+		/**
+		 * Simple search method which grabs all products by the search keyword
+		 * 
+         * @return html
+         */
 
+		if(isset($_POST["search"])) 
+		{
+            $searchinfo = $_POST["searchinfo"];
             $sql = "SELECT * FROM products WHERE product_name LIKE '%$searchinfo%' OR product_brand LIKE '%$searchinfo%'";
             $products = $this->dataHandler->readAllData($sql);
-
-            
-            // $products = [$result];
         } 
 
 		$this->html = '';
@@ -67,9 +80,14 @@ class htmlElements {
 		return $this->html;
 	}
 
-	//Haal alle producten op
 	public function displayProducts()
 	{
+		/**
+         * Get all the products and put them in a card
+		 * 
+		 * @return html
+         */
+
 		$sql = "SELECT * FROM products";
 		$products = $this->dataHandler->readAllData($sql);
 
@@ -102,9 +120,14 @@ class htmlElements {
 		return $this->html;
 	}
 
-	//Maak een table
 	public function createTable()
 	{		
+		/**
+         * Creates a table
+		 * 
+		 * @return html
+         */
+
 		$sql = "SHOW COLUMNS FROM products";
 		$headers = $this->dataHandler->readData($sql);
 		

@@ -8,11 +8,19 @@ class loginModel {
 
     public function __construct()
     {
+        /**
+         * Make a new instance of the dataHandler class 
+         */
+
         $this->dataHandler = new dataHandler();
     }
 
     public function submitLogin()
     {
+        /**
+         * Submit the login form of the login button has been pushed
+         */
+
         if(isset($_REQUEST['login']))
         {
             if($_REQUEST['email'] == '')

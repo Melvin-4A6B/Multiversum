@@ -3,6 +3,9 @@
 require_once('controller/dataHandler.php');
 require_once('htmlElements.php');
 
+//Work in progress
+//Not used anymore!
+
 class contactModel {
 
 	public function __construct() 
