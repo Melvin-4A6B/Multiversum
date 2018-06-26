@@ -114,8 +114,8 @@ class cartModel {
             }
             else
             {
-                $shipping = '&euro;' . 6.95;
-                $shippingPrice = 6.95;
+                $shipping = '&euro;' . 6.50;
+                $shippingPrice = 6.50;
             }
 
             $total = $total + $shippingPrice + ($subTotal);
